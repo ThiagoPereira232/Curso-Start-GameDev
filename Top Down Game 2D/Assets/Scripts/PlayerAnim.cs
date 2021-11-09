@@ -27,7 +27,7 @@ public class PlayerAnim : MonoBehaviour
     {
         if (player.direction.sqrMagnitude > 0)
         {
-            if(player.isRolling)
+            if (player.isRolling)
             {
                 anim.SetTrigger("isRoll");
             }

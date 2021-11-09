@@ -76002,28 +76002,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e70072ea14f53d48aecd00f283db9e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1776069913 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4032303080462621928, guid: 9e6782045f991b84585d6ce116ef8e63, type: 3}
-  m_PrefabInstance: {fileID: 4032303081112515057}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1776069916
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1776069913}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb0a15af7b026b9418696e0a291c40b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogueRange: 1.54
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  dialogue: {fileID: 11400000, guid: 1aab893bfd4413b44885331edd694225, type: 2}
 --- !u!1 &2144146633
 GameObject:
   m_ObjectHideFlags: 0
