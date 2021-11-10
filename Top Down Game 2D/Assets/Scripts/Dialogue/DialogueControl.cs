@@ -25,11 +25,14 @@ public class DialogueControl : MonoBehaviour
     public float typingSpeed; // velocidade da fala
 
     // Variaveis de controle
+    // [HideInInspector] = variavel publlica q nn aarece no inspector
     private bool isShowing; // se a janela esta visivel
     private int index; // index das sentencas
     private string[] sentences; // lista das sentencas
 
     public static DialogueControl instance;
+
+    public bool IsShowing { get => isShowing; set => isShowing = value; }
 
     // awake é chamado antes de todos os start() na hierarquia de execução dos scripts
     void Awake()
