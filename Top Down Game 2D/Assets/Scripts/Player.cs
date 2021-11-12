@@ -13,7 +13,11 @@ public class Player : MonoBehaviour
     private bool _isRunning;
     private bool _isRolling;
     private bool _isCutting;
+    private bool _isDigging;
+
     private Vector2 _direction;
+
+    private int handlingObj;
 
     public Vector2 direction
     {
@@ -34,6 +38,7 @@ public class Player : MonoBehaviour
     }
 
     public bool isCutting { get => _isCutting; set => _isCutting = value; }
+    public bool isDigging { get => _isDigging; set => _isDigging = value; }
 
     private void Start()
     {
@@ -44,10 +49,24 @@ public class Player : MonoBehaviour
     // utilizado para capturar inputs, logicas que não envolvam fisicas
     private void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            handlingObj = 0;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            handlingObj = 1;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            handlingObj = 2;
+        }
+
         OnInput();
         OnRun();
         OnRolling();
         OnCutting();
+        OnDig();
     }
 
     // utilizado para coisas relacionadas a fisica
@@ -58,17 +77,37 @@ public class Player : MonoBehaviour
 
     #region Movement
 
+    void OnDig()
+    {
+        if(handlingObj == 1)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                isDigging = true;
+                speed = 0;
+            }
+            if (Input.GetMouseButtonUp(0))
+            {
+                isDigging = false;
+                speed = initialSpeed;
+            }
+        }
+    }
+
     void OnCutting()
     {
-        if (Input.GetMouseButtonDown(0))
+        if(handlingObj == 0)
         {
-            isCutting = true;
-            speed = 0;
-        }
-        if (Input.GetMouseButtonUp(0))
-        {
-            isCutting = false;
-            speed = initialSpeed;
+            if (Input.GetMouseButtonDown(0))
+            {
+                isCutting = true;
+                speed = 0;
+            }
+            if (Input.GetMouseButtonUp(0))
+            {
+                isCutting = false;
+                speed = initialSpeed;
+            }
         }
     }
 
