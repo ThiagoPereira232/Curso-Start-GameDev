@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     private bool _isRolling;
     private bool _isCutting;
     private bool _isDigging;
+    private bool canRoll = true;
 
     private Vector2 _direction;
 
@@ -138,16 +139,32 @@ public class Player : MonoBehaviour
     void OnRolling()
     {
         // 1 = direito, 0 = esquerdo
-        if (Input.GetMouseButtonDown(1))
+        if(canRoll)
         {
-            speed = runSpeed;
-            _isRolling = true;
-        }
-        if (Input.GetMouseButtonUp(1))
+            if (Input.GetMouseButtonDown(1))
+            {
+                canRoll = false;
+                speed = runSpeed;
+                _isRolling = true;
+                Invoke("FinishRolling", 0.02f);
+                Invoke("CanNewRolling", 0.8f);
+            }
+        }   
+        /*if (Input.GetMouseButtonUp(1))
         {
             speed = initialSpeed;
             _isRolling = false;
-        }
+        }*/
+    }
+
+    private void FinishRolling()
+    {
+        speed = initialSpeed;
+        _isRolling = false;
+    }
+    private void CanNewRolling()
+    {
+        canRoll = true;
     }
 
     #endregion
