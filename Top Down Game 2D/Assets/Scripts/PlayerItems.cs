@@ -4,19 +4,18 @@ using UnityEngine;
 
 public class PlayerItems : MonoBehaviour
 {
-    [SerializeField] private int totalWood;
+    [SerializeField] private int _totalWood;
+    
+    public float currentWater;
+    private float waterLimit = 50;
 
-    public int TotalWood { get => totalWood; set => totalWood = value; }
+    public int TotalWood { get => _totalWood; set => _totalWood = value; }
 
-    // Start is called before the first frame update
-    void Start()
+    public void WaterLimit(float water)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if(currentWater < waterLimit)
+        {
+            currentWater += water;
+        }
     }
 }
