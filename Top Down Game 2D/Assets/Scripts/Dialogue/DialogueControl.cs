@@ -29,6 +29,8 @@ public class DialogueControl : MonoBehaviour
     private bool isShowing; // se a janela esta visivel
     private int index; // index das sentencas
     private string[] sentences; // lista das sentencas
+    Sprite[] sprites;
+    string[] actorName; //criei esse array para coletar o nome em cada fala
 
     public static DialogueControl instance;
 
@@ -73,7 +75,8 @@ public class DialogueControl : MonoBehaviour
                 index++;
                 speechText.text = "";
                 StartCoroutine(TypeSentence());
-
+                profileSprite.sprite = sprites[index];
+                actorNameText.text = actorName[index]; //aqui o text recebe o nome de quem fala do array
             }
             else
             {
@@ -87,13 +90,17 @@ public class DialogueControl : MonoBehaviour
     }
 
     // chamar a fala do npc
-    public void Speech(string[] txt)
+    public void Speech(string[] txt, Sprite[] spr, string[] nameTxt)
     {
         if(!isShowing)
         {
             dialogueObj.SetActive(true);
             sentences = txt;
+            sprites = spr;
+            actorName = nameTxt; //aqui coloco os nomes no array actorName
             StartCoroutine(TypeSentence());
+            profileSprite.sprite = sprites[index]; //mostra o primeiro sprite
+            actorNameText.text = actorName[index]; //mostra o primeiro nome
             isShowing = true;
         }
     }
